@@ -41,19 +41,128 @@
 
 
 
-            
 
-
-
-
-
-
-
-
-
-
-
+            <div id="app">
+                <div class="calculon">
+                    <div class="calc-title">Рассчитайте стоимость доставки<span>Заполните поля ниже, чтобы узнать
+                            стоимость Вашего отправления.</span></div>
+                    <div class="calc-form">
+                        <div class="form-line form-2-items" id="csw" data-status="1">
+                            <div class="form-group" id="s-opt-1"><label id="sl-1">Откуда</label>
+                                <div class="form-control">Москва</div>
+                            </div>
+                            <a class="revese" id="reversebtn"></a>
+                            <div class="form-group" id="s-opt-2"><label id="sl-2">Куда</label>
+                                <div class="form-control select-box"><select id="not-moscow">
+                                        <option disabled="disabled" id="cityloadz" selected="selected">Загрузка...
+                                        </option>
+                                    </select></div>
+                            </div>
+                        </div>
+                        <div class="form-line">
+                            <div class="form-group"><label id="sairport-tt"> Аэропорт вылета: </label>
+                                <div class="form-control select-box"><select id="sairport" disabled="disabled">
+                                        <!-- Выберите аэропорт отправки -->
+                                        <option selected="selected" id="airportsloadz" disabled="disabled">Сперва
+                                            выберите город</option>
+                                    </select></div>
+                            </div>
+                        </div>
+                        <div class="form-line form-2-items">
+                            <div class="form-group"><label>Вес груза</label>
+                                <div class="control-box"><input type="number" min="30" max="1000" id="inputWeight"
+                                        placeholder="Вес, кг" class="form-control" /> <span class="type">кг</span></div>
+                            </div>
+                            <div class="form-group"><label>Объём груза</label>
+                                <div class="control-box"><input type="number" id="inputVolume" min="0"
+                                        placeholder="Объём, м.куб" class="form-control" /> <span
+                                        class="type">м<sup>3</sup></span></div>
+                            </div>
+                        </div>
+                        <div class="form-line">
+                            <div class="form-group"><label>Габариты груза</label>
+                                <div class="control-row">
+                                    <div class="control-box"><input type="number" id="inputHeight" min="0"
+                                            placeholder="Высота, см" class="form-control" /> <span
+                                            class="type type-1"></span></div>
+                                    <div class="control-box"><input type="number" id="inputWidth" min="0"
+                                            placeholder="Ширина, см" class="form-control" /> <span
+                                            class="type type-2"></span></div>
+                                    <div class="control-box"><input type="number" id="inputDepth" min="0"
+                                            placeholder="Глубина, см" class="form-control" /> <span
+                                            class="type type-3"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-line"><label>В стоимость доставки входит:</label>
+                            <ul class="included">
+                                <li><span>Авианакладная</span><strong id="nakl">0 руб.</strong></li>
+                                <li><span>Доп.сборы </span><strong id="dop">0 руб.</strong></li>
+                            </ul>
+                        </div>
+                        <div class="form-total"><span>Сумма доставки: </span> <strong id="displaysum">0 руб.</strong>
+                        </div>
+                        <button data-toggle="modal" data-target="#modal-1" class="form-sub"><span>Сделать
+                                заказ</span></button>
+                    </div>
+                </div>
+                <div id="modal-1" role="dialog" aria-labelledby="myModalLabel" class="modal modal-order fade"
+                    tabindex="-1">
+                    <div role="document" class="modal-dialog">
+                        <div class="modal-content calculon"><button type="button" data-dismiss="modal"
+                                aria-label="Close" class="close"><span aria-hidden="true">&times;</span></button>
+                            <div class="calc-title">Заявка на отправление<span>Заполните поля ниже, чтобы мы связались с
+                                    Вами для уточнения деталей</span></div>
+                            <div class="calc-form">
+                                <div class="form-line">
+                                    <div class="form-group"><label>Ваше имя <i>*</i><span>Обязательное
+                                                поле</span></label> <input type="text" placeholder="Введите Ваше имя"
+                                            class="form-control" /></div>
+                                </div>
+                                <div class="form-line">
+                                    <div class="form-group"><label>Ваш телефон <i>*</i><span>Обязательное
+                                                поле</span></label> <input type="tel"
+                                            placeholder="Введите Ваш номер телефона" class="form-control" /></div>
+                                </div>
+                                <div class="form-line">
+                                    <div class="form-group"><label>Комментарий к заказу</label> <textarea
+                                            placeholder="Введите Ваш комментарий к заказу" cols="30" rows="10"
+                                            class="form-control"></textarea></div>
+                                </div>
+                                <div class="agree"><input type="checkbox" name="" id="agree" /> <label for="agree"> Я
+                                        даю согласие на обработку <a target="_blank">пероснальных данных</a> и
+                                        соглашаюсь с <a target="_blank">политикой конфедециальности</a></label></div>
+                                <button class="form-sub"><span>Сделать заказ</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="modal-2" role="dialog" aria-labelledby="modal-2Label" class="modal modal-order fade"
+                    tabindex="-1">
+                    <div role="document" class="modal-dialog">
+                        <div class="modal-content calculon thx"><button type="button" data-dismiss="modal"
+                                aria-label="Close" class="close"><span aria-hidden="true">&times;</span></button>
+                            <div class="calc-title">Спасибо, за оставленную заявку! <span>Заявка отправлена и находится
+                                    в обработке. Скоро с Вами свяжутся наши специалисты для уточнения деталей.</span>
+                            </div>
+                            <a class="form-sub"><span>Вернуться на сайт</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
 
 
 
@@ -75,7 +184,7 @@
 </body>
 
 
-<script src="script.js"></script>
+<script src=" script.js"></script>
 
 
 
