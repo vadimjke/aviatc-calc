@@ -200,7 +200,8 @@ function getMargin(v) {
         else {
             result = 0;
         }
-        console.log(result)
+        // Debug
+        // console.log(result)
         return result;
     }
     if (v == "dop") {
