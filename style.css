@@ -487,34 +487,34 @@
 
 .agree,
 .tltp {
-    font-size: 10px
+    font-size: 10px !important
 }
 
 .agree {
-    color: #aab0b3;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    line-height: 18px;
-    position: relative;
-    margin-top: 50px;
-    margin-bottom: 20px
+    color: #aab0b3 !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    line-height: 18px !important;
+    position: relative !important;
+    margin-top: 50px !important;
+    margin-bottom: 20px !important;
 }
 
 .agree input[type=checkbox] {
-    position: absolute;
-    left: 0;
-    top: 0
+    position: absolute !important;
+    left: 0 !important;
+    top: 4px !important
 }
 
 .agree label {
-    font-weight: 400;
-    display: inline-block;
-    padding-left: 25px
+    font-weight: 400 !important;
+    display: inline-block !important;
+    padding-left: 25px !important
 }
 
 .agree a {
-    color: #f6800e
+    color: #f6800e !important
 }
 
 @media (max-width:991px) {
@@ -1104,4 +1104,28 @@
 		width:100%;
 		margin:5px 0 !important;
 	}
+}
+
+.close:not(:disabled):not(.disabled):hover {
+    color: #fff !important;
+}
+
+button.close {
+    -webkit-appearance: none !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    background: 0 0 !important;
+    border: 0 !important;
+}
+
+input[type="checkbox"] {
+    display: inline-flex !important;
+}
+
+#questTt {
+    font-size: 14px;
+    width: 21px;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 1px;
 }

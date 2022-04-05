@@ -63,6 +63,8 @@ function calc(e) {
 
         removeSelection()
 
+        $("#app").data("t","vol");
+
         $("#inputVolume").css("font-weight", "bold");
         $("#inputVolume").css("border", "1px solid #444");
 
@@ -71,6 +73,8 @@ function calc(e) {
         // calc dimensions
 
         removeSelection()
+
+        $("#app").data("t","dim");
 
         $("#inputWidth").css("font-weight", "bold");
         $("#inputWidth").css("border", "1px solid #444");
@@ -157,7 +161,17 @@ $('#inputWeight').on('input', function (e) {
         this.value = 1000;
     }
 
-    calc(e);
+    if ($("#app").data("t") == "dim") {
+        calc("dim");
+    }
+    else if ($("#app").data("t") == "dim") {
+        calc("vol");
+    }
+    else {
+        calc(e);
+    }
+
+    
 });
 
 $('#inputWeight').on('change', function (e) {
@@ -167,19 +181,31 @@ $('#inputWeight').on('change', function (e) {
     if (this.value < minWeight) {
         this.value = minWeight;
     }
-    calc(e);
+    if ($("#app").data("t") == "dim") {
+        calc("dim");
+    }
+    else if ($("#app").data("t") == "dim") {
+        calc("vol");
+    }
+    else {
+        calc(e);
+    }
 })
 
 $('#inputVolume').on('input', function (e) {
+    $("#app").data("t","vol");
     calc('vol');
 });
 $('#inputWidth').on('input', function (e) {
+    $("#app").data("t","dim");
     calc('dim');
 });
 $('#inputHeight').on('input', function (e) {
+    $("#app").data("t","dim");
     calc('dim');
 });
 $('#inputDepth').on('input', function (e) {
+    $("#app").data("t","dim");
     calc('dim');
 });
 
@@ -448,6 +474,45 @@ function resetInputs() {
     $("#inputDepth").val(depth).change();
     $("#inputVolume").val(volume).change();
 }
+
+
+// Phone Mask
+window.addEventListener("DOMContentLoaded", function() {
+    [].forEach.call( document.querySelectorAll('.telz'), function(input) {
+    var keyCode;
+    function mask(event) {
+        event.keyCode && (keyCode = event.keyCode);
+        var pos = this.selectionStart;
+        if (pos < 3) event.preventDefault();
+        var matrix = "+7 (___) ___ ____",
+            i = 0,
+            def = matrix.replace(/\D/g, ""),
+            val = this.value.replace(/\D/g, ""),
+            new_value = matrix.replace(/[_\d]/g, function(a) {
+                return i < val.length ? val.charAt(i++) || def.charAt(i) : a
+            });
+        i = new_value.indexOf("_");
+        if (i != -1) {
+            i < 5 && (i = 3);
+            new_value = new_value.slice(0, i)
+        }
+        var reg = matrix.substr(0, this.value.length).replace(/_+/g,
+            function(a) {
+                return "\\d{1," + a.length + "}"
+            }).replace(/[+()]/g, "\\$&");
+        reg = new RegExp("^" + reg + "$");
+        if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) this.value = new_value;
+        if (event.type == "blur" && this.value.length < 5)  this.value = ""
+    }
+
+    input.addEventListener("input", mask, false);
+    input.addEventListener("focus", mask, false);
+    input.addEventListener("blur", mask, false);
+    input.addEventListener("keydown", mask, false)
+
+  });
+
+});
 
 // Main Func
 async function init() {
