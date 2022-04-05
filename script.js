@@ -144,7 +144,7 @@ function calc(e) {
     sum = Math.round(sum);
 
     // Debug
-    // console.log("wprice = " + weightPrice + " | calcWeight = " + calcWeight + " | sum = " + sum);
+    // console.log("wprice = " + weightPrice + " | calcWeight = " + calcWeight + " | sum = " + sum + " | margin = " + margin);
 
     displaySum = sum + " руб.";
     $("#displaysum").text(displaySum);
@@ -192,14 +192,15 @@ function getMargin(v) {
         if (city !== "Выберите город" && airport !== "Выберите аэропорт отправки") {
             data.forEach((el, i) => {
                 if (el.City === city && el.Airport === airport) {
-                    result = parseInt(el.Dop) + parseInt(el.Avianakl);
+                    let dop = el.Dop.toString().replace(/ /g, '');
+                    result = parseInt(dop) + parseInt(el.Avianakl);
                 }
             })
         }
         else {
             result = 0;
         }
-
+        console.log(result)
         return result;
     }
     if (v == "dop") {
